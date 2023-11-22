@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
-function App() {
+//components
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
+//pages
+import Courses from './pages/Courses';
+import Home from './pages/Home';
+
+const App = () => {
+  const [authenticated, setAuthenticated] = useState(false);
+
+  useEffect(() => {
+    
+    if (localStorage.getItem('token')){
+      setAuthenticated(true);
+    }
+
+  }, [])
+
+  const onAuthenticated = (auth, token) => {
+    setAuthenticated(auth);
+
+    if (auth) {
+      localStorage.setItem('token', token);
+    } else {
+      localStorage.removeItem('token');
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Router>
+      <Navbar/>
+        <Routes>
+        <Route path='/' element={<Home/>} />
+          <Route path='/courses' element={<Courses/>} />
+        </Routes>
+    </Router>  
+    <Footer/>
+    </>
+    
   );
 }
+
 
 export default App;
