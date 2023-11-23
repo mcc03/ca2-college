@@ -6,8 +6,9 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 //pages
-import Courses from './pages/Courses';
+import Index from './pages/courses/Index';
 import Home from './pages/Home';
+import CoursesShow from './pages/courses/Show'
 
 const App = () => {
   const [authenticated, setAuthenticated] = useState(false);
@@ -36,7 +37,8 @@ const App = () => {
       <Navbar/>
         <Routes>
         <Route path='/' element={<Home/>} />
-          <Route path='/courses' element={<Courses/>} />
+          <Route path='/courses' element={<Index/>} />
+          <Route path='/courses/:id' element={<CoursesShow/>} />
         </Routes>
     </Router>  
     <Footer/>
