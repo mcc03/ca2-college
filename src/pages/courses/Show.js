@@ -39,7 +39,7 @@ const Show = () => {
                 <p><b>Description:</b> {courses.description}</p>
                 <p><b>Level :</b> {courses.level}</p>
                 <p><b>Code :</b> {courses.code}</p>
-                <p><b>Points :</b> {courses.points}</p>
+                <b><p>Points :  <span className='text-blue-500'>{courses.points}</span></p></b>
             </div>
         </>
     )
