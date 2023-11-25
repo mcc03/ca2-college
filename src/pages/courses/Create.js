@@ -1,44 +1,26 @@
-import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useState} from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const Edit = () => {
-
-    // takes id from url
-    const { id } = useParams();
-    const [courses, setCourses] = useState(null);
-    const navigate = useNavigate();
-    const [errors, setErrors] = useState({});
-    const [form, setForm] = useState({
-        title: "",
-        description: "",
-        level: "",
-        code: "",
-        points: ""
-    });
+const Create = () => {
 
     const errorStyle = {
         color: 'red'
     };
 
-    let token = localStorage.getItem('token');
 
-    useEffect(() => {
-        axios.get(`https://college-api.vercel.app/api/courses/${id}`, {
-            // important
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        })
-            .then(response => {
-                setCourses(response.data)
-                console.log(response.data)
-                setForm(response.data)
-            })
-                .catch(err => {
-                    console.error(err);
-            })
-    }, [id])
+    const navigate = useNavigate();
+    const [errors, setErrors] = useState({});
+
+    const [form, setForm] = useState({
+        title: "",
+        code: "",
+        description: "",
+        points: "",
+        level: ""
+        // start_date: "",
+        // end_date: ""
+    });
 
     const handleForm = (e) => {
         setForm(prevState => ({
@@ -75,16 +57,16 @@ const Edit = () => {
         e.preventDefault();
         console.log("submitted", form)
 
-        if (isRequired(['title', 'description', 'level', 'code', 'points'])) {
+        if (isRequired(['title', 'code', 'description', 'level', 'points'])) {
             let token = localStorage.getItem('token');
 
-            axios.put(`https://college-api.vercel.app/api/courses/${id}`, form, {
+            axios.post('https://college-api.vercel.app/api/courses', form, {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
             })
             .then(response => {
-                navigate(`/courses/${id}`);
+                navigate('/courses');
             })
             .catch(err => {
                 console.error(err);
@@ -92,29 +74,21 @@ const Edit = () => {
         }   
     }
 
-    if(!courses) return <h4>Courses not found</h4>
-
     return (
-        <>
-            <h2>Edit Courses</h2>
 
+        // 'errors.title?.message': if there is a title show msg
+        <>
+            <h2>Create course</h2>
             <form onSubmit={submitForm}>
                 <div>Title: <input type="text" onChange={handleForm} value={form.title} name='title'/><span style={errorStyle}>{errors.title?.message}</span></div>
                 
-                <div>Description: <input type="text" onChange={handleForm} value={form.description} name='description' /><span style={errorStyle}>{errors.description?.message}</span></div>
+                <div>Code: <input type="text" onChange={handleForm} value={form.code} name='code' /><span style={errorStyle}>{errors.code?.message}</span></div>
                 
-                <div>Code: <input type="text" 
+                <div>Description: <input type="text" 
                 onChange={handleForm} 
-                value={form.code} 
-                name='code' />
-                <span style={errorStyle}>{errors.code?.message}</span>
-                </div>
-
-                <div>Level: <input type="text" 
-                onChange={handleForm} 
-                value={form.level} 
-                name='level' />
-                <span style={errorStyle}>{errors.level?.message}</span>
+                value={form.description} 
+                name='description' />
+                <span style={errorStyle}>{errors.description?.message}</span>
                 </div>
 
                 <div>Points: <input type="text" 
@@ -123,13 +97,22 @@ const Edit = () => {
                 name='points' />
                 <span style={errorStyle}>{errors.points?.message}</span>
                 </div>
-                
+
+                <div>Level: <input type="text" 
+                onChange={handleForm} 
+                value={form.level} 
+                name='level' />
+                <span style={errorStyle}>{errors.level?.message}</span>
+                </div>
+{/* 
                 <div>Start date: <input type="datetime-local" onChange={handleForm} value={form.start_date} name='start_date' /></div>
-                <div>End date: <input type="datetime-local" onChange={handleForm} value={form.end_date} name='end_date' /></div>
+                <div>End date: <input type="datetime-local" onChange={handleForm} value={form.end_date} name='end_date' /></div> */}
+
                 <input type="submit"/>
             </form>
+
         </>
     );
 }
 
-export default Edit;
+export default Create;

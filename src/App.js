@@ -8,10 +8,14 @@ import Footer from "./components/Footer";
 //pages
 import Index from './pages/courses/Index';
 import Home from './pages/Home';
-import CoursesShow from './pages/courses/Show'
+import CoursesShow from './pages/courses/Show';
+import CoursesEdit from './pages/courses/Edit';
+import CoursesCreate from './pages/courses/Create';
 
 const App = () => {
   const [authenticated, setAuthenticated] = useState(false);
+
+  let protectedRoutes;
 
   useEffect(() => {
     
@@ -31,14 +35,24 @@ const App = () => {
     }
   };
 
+  if (authenticated){
+    protectedRoutes = (
+      <>
+        <Route path='/courses/create' element={<CoursesCreate/>} />
+        <Route path='/courses/:id/edit' element={<CoursesEdit/>} />
+        <Route path='/courses/:id' element={<CoursesShow/>} />
+      </>
+    )
+  } 
+
   return (
     <>
     <Router>
-      <Navbar/>
+      <Navbar authenticated={authenticated} onAuthenticated={onAuthenticated}/>
         <Routes>
-        <Route path='/' element={<Home/>} />
-          <Route path='/courses' element={<Index/>} />
-          <Route path='/courses/:id' element={<CoursesShow/>} />
+        <Route path='/' element={<Home authenticated={authenticated} onAuthenticated={onAuthenticated} />} />
+        <Route path='/courses' element={<Index authenticated={authenticated}/> }/>
+          {protectedRoutes}
         </Routes>
     </Router>  
     <Footer/>

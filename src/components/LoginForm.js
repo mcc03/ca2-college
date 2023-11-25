@@ -8,7 +8,7 @@ const LoginForm = ({ authenticated, onAuthenticated }) => {
     };
 
     const [form, setForm] = useState({
-        email: "mcc@bloggs.com",
+        email: "mcc2@bloggs.com",
         password: "secret"
         });
 
