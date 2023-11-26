@@ -8,9 +8,16 @@ import Footer from "./components/Footer";
 //pages
 import Index from './pages/courses/Index';
 import Home from './pages/Home';
+
+//courses
 import CoursesShow from './pages/courses/Show';
 import CoursesEdit from './pages/courses/Edit';
 import CoursesCreate from './pages/courses/Create';
+
+//lecturers
+import LecturersIndex from './pages/lecturers/Index';
+import LecturersShow from './pages/lecturers/Show';
+import LecturersCreate from './pages/lecturers/Create';
 
 const App = () => {
   const [authenticated, setAuthenticated] = useState(false);
@@ -41,6 +48,10 @@ const App = () => {
         <Route path='/courses/create' element={<CoursesCreate/>} />
         <Route path='/courses/:id/edit' element={<CoursesEdit/>} />
         <Route path='/courses/:id' element={<CoursesShow/>} />
+        <Route path='/lecturers' element={<LecturersIndex/>} />
+        <Route path='/lecturers/:id' element={<LecturersShow/>} />
+        <Route path='/lecturers/create' element={<LecturersCreate/>} />
+
       </>
     )
   } 
