@@ -19,6 +19,11 @@ import LecturersIndex from './pages/lecturers/Index';
 import LecturersShow from './pages/lecturers/Show';
 import LecturersCreate from './pages/lecturers/Create';
 
+//enrolments
+import EnrolmentsIndex from './pages/enrolments/Index';
+import EnrolmentsShow from './pages/enrolments/Show';
+import EnrolmentsCreate from './pages/enrolments/Create';
+
 const App = () => {
   const [authenticated, setAuthenticated] = useState(false);
 
@@ -48,10 +53,14 @@ const App = () => {
         <Route path='/courses/create' element={<CoursesCreate/>} />
         <Route path='/courses/:id/edit' element={<CoursesEdit/>} />
         <Route path='/courses/:id' element={<CoursesShow/>} />
+
         <Route path='/lecturers' element={<LecturersIndex/>} />
         <Route path='/lecturers/:id' element={<LecturersShow/>} />
         <Route path='/lecturers/create' element={<LecturersCreate/>} />
 
+        <Route path='/enrolments' element={<EnrolmentsIndex/>} />
+        <Route path='/enrolments/:id' element={<EnrolmentsShow/>} />
+        <Route path='/enrolments/create' element={<EnrolmentsCreate/>} />
       </>
     )
   } 
