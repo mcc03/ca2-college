@@ -49,7 +49,7 @@ const Index = () => {
                 <b><p>Email: {lecturers.email}</p></b>
                 <b><p>Phone: {lecturers.phone}</p></b>
 
-                <DeleteBtn resource="lecturers" id={lecturers.id} deleteCallBack={removeLecture} />
+                <DeleteBtn resource="lecturers" anotherResource="enrolments" id={lecturers.id} deleteCallBack={removeLecture} />
 
                 <hr/>
             </div>

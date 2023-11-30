@@ -1,7 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ authenticated, onAuthenticated }) => {
+
+	const navigate = useNavigate();
+
+	const logout = () => {
+		onAuthenticated(false);
+		navigate('/');
+    }
+
 	return (
+
 		<>
 			<div className="navbar bg-base-300">
 				<div className="navbar-start">
@@ -43,6 +52,13 @@ const Navbar = () => {
 				<div className="navbar-center">
 					<Link to='/' className="btn btn-ghost text-xl">College-API</Link>
 				</div>
+
+				{/* turnery syntax: () ? () : () */}
+				{(authenticated) ? (
+					<button className='btn' onClick={logout}>Logout</button>
+					) : ""
+				}
+      
 				<div className="navbar-end">
 					{/* <button className="btn btn-ghost btn-circle">
 						<svg

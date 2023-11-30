@@ -50,7 +50,7 @@ const Index = () => {
                 <p><b>Code :</b> {courses.code}</p>
                 <b><p>Points :  <span className='text-blue-500'>{courses.points}</span></p></b>
 
-                <DeleteBtn resource="courses" id={courses.id} deleteCallBack={removeCourse} />
+                <DeleteBtn resource="courses" anotherResource="enrolments" id={courses.id} deleteCallBack={removeCourse} data={courses}/>
 
                 <hr/>
             </div>

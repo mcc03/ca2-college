@@ -23,7 +23,7 @@ const Show = () => {
         })
             .then(response => {
                 setCourses(response.data.data)
-                console.log(response.data.data)
+                console.log("hello", response.data.data)
             })
                 .catch(err => {
                     console.error(err);
