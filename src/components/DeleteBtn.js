@@ -31,8 +31,8 @@ const DeleteBtn = ({id, resource, anotherResource, deleteCallBack, data}) => {
                     headers: { Authorization: `Bearer ${token}` }
             })
                 .then((response) => {
-                 //do something
-                 if (data[anotherResource].length <= 0) {
+                //do something
+                if (data[anotherResource].length <= 0) {
                     axios.delete(`https://college-api.vercel.app/api/${resource}/${id}`, {
                         headers: {
                         Authorization: `Bearer ${token}`

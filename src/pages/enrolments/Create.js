@@ -8,7 +8,6 @@ const Create = () => {
         color: 'red'
     };
 
-
     const navigate = useNavigate();
     const [errors, setErrors] = useState({});
 
@@ -28,6 +27,14 @@ const Create = () => {
             [e.target.name]: e.target.value
         }));
     };
+
+    // const handleChange = (e) => {
+    //     console.log(e.target.value);
+    //     // setForm(prevState => ({
+    //     //     ...prevState,
+    //     //     [e.target.name]: e.target.value
+    //     // }));
+    // };
 
     // error handling
     const isRequired = (fields) => {
@@ -84,34 +91,42 @@ const Create = () => {
                 
                 <div>Lecturer ID: <input type="text" onChange={handleForm} value={form.lecturer_id} name='lecturer_id' /><span style={errorStyle}>{errors.lecturer_id?.message}</span></div>
                 
-                <div>Date: <input type="text" 
+                <div>Date: <input type="date" 
                 onChange={handleForm} 
                 value={form.date} 
                 name='date' />
                 <span style={errorStyle}>{errors.date?.message}</span>
                 </div>
 
-                <div>Time: <input type="text" 
+                <div>Time: <input type="time" 
                 onChange={handleForm} 
                 value={form.time} 
                 name='time' />
                 <span style={errorStyle}>{errors.time?.message}</span>
                 </div>
 
-                <div>Status: <input type="text" 
+                {/* <div>Status: <input type="text" 
                 onChange={handleForm} 
                 value={form.status} 
                 name='status' />
                 <span style={errorStyle}>{errors.status?.message}</span>
+                </div> */}
+
+                {/* dropdown menu */}
+                <div for="status">Select a status:
+                <select name="status" onChange={handleForm}>
+                <option value="assigned">Assigned</option>
+                <option value="interested">Interested</option>
+                <option value="associate">Associate</option>
+                <option value="career_break">Career break</option>
+                </select>
                 </div>
                 
-
                 {/* <div>Start date: <input type="date" pattern="\yyyy{4}-\mm{2}-\d{2}" onChange={handleForm} value={form.start_date} name='start_date' /></div>
                 <div>End date: <input type="datetime-local" onChange={handleForm} value={form.end_date} name='end_date' /></div> */}
 
                 <input type="submit"/>
             </form>
-
         </>
     );
 }

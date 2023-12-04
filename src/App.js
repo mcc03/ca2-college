@@ -17,6 +17,7 @@ import CoursesCreate from './pages/courses/Create';
 //lecturers
 import LecturersIndex from './pages/lecturers/Index';
 import LecturersShow from './pages/lecturers/Show';
+import LecturersEdit from './pages/lecturers/Edit';
 import LecturersCreate from './pages/lecturers/Create';
 
 //enrolments
@@ -56,6 +57,7 @@ const App = () => {
 
         <Route path='/lecturers' element={<LecturersIndex/>} />
         <Route path='/lecturers/:id' element={<LecturersShow/>} />
+        <Route path='/lecturers/:id/edit' element={<LecturersEdit/>} />
         <Route path='/lecturers/create' element={<LecturersCreate/>} />
 
         <Route path='/enrolments' element={<EnrolmentsIndex/>} />

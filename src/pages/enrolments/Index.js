@@ -49,8 +49,7 @@ const Index = () => {
                 <p><b>Course ID :</b> {enrolments.course_id}</p>
                 <p><b>Lecturer Name :</b> {enrolments.lecturer.name}  <span className='text-blue-500'>(ID: {enrolments.lecturer_id})</span></p>
 
-
-                <DeleteBtn resource="enrolments" id={enrolments.id} deleteCallBack={removeEnrolment} />
+                <DeleteBtn resource="enrolments" id={enrolments.id} deleteCallBack={removeEnrolment} data={enrolments}/>
 
                 <hr/>
             </div>
