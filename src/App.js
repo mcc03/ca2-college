@@ -23,6 +23,7 @@ import LecturersCreate from './pages/lecturers/Create';
 //enrolments
 import EnrolmentsIndex from './pages/enrolments/Index';
 import EnrolmentsShow from './pages/enrolments/Show';
+import EnrolmentsEdit from './pages/enrolments/Edit';
 import EnrolmentsCreate from './pages/enrolments/Create';
 
 const App = () => {
@@ -62,6 +63,7 @@ const App = () => {
 
         <Route path='/enrolments' element={<EnrolmentsIndex/>} />
         <Route path='/enrolments/:id' element={<EnrolmentsShow/>} />
+        <Route path='/enrolments/:id/edit' element={<EnrolmentsEdit/>} />
         <Route path='/enrolments/create' element={<EnrolmentsCreate/>} />
       </>
     )
