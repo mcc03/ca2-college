@@ -29,7 +29,7 @@ const Index = () => {
     const removeEnrolment = (id) => {
         console.log("Deleted: ", id)
 
-        //looping through all festivals, adding festival to list that doesnt have the id
+        //looping through all enrolemts, adding enrolemt to list that doesnt have the id
         let updatedEnrolments = enrolments.filter((enrolment) => {
             return enrolment._id !== id;
         })
@@ -43,7 +43,7 @@ const Index = () => {
         return (
             <div className="ms-2" key={enrolments._id}>
 
-                <Link to={`/enrolments/${enrolments.id}`}><p><b>Enrolment Title :</b> {enrolments.course.title}  <span className='text-blue-500'>(ID: {enrolments.course_id})</span></p></Link>
+                <Link to={`/enrolments/${enrolments.id}`}><p><b>Enrolment Title :</b> {enrolments.course.title}<span className='text-blue-500'>(ID: {enrolments.course_id})</span></p></Link>
                 <b><p>Enrolment Code: {enrolments.course.code}</p></b>
                 <p><b>Obj ID :</b> {enrolments.id}</p>
                 <p><b>Course ID :</b> {enrolments.course_id}</p>
