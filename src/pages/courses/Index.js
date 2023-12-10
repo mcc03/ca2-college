@@ -29,7 +29,7 @@ const Index = () => {
     const removeCourse = (id) => {
         console.log("Deleted: ", id)
 
-        //looping through all festivals, adding festival to list that doesnt have the id
+        //looping through all courses, adding course to list that doesnt have the id
         let updatedCourses = courses.filter((course) => {
             return course._id !== id;
         })
