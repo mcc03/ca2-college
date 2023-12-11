@@ -1,6 +1,7 @@
 import { useState} from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Create = () => {
 
@@ -77,32 +78,63 @@ const Create = () => {
 
         // 'errors.title?.message': if there is a title show msg
         <>
-            <h2>Create lecturer</h2>
-            <form onSubmit={submitForm}>
-                <div>Name: <input type="text" onChange={handleForm} value={form.name} name='name'/><span style={errorStyle}>{errors.name?.message}</span></div>
-                
-                <div>Address: <input type="text" onChange={handleForm} value={form.address} name='address' /><span style={errorStyle}>{errors.address?.message}</span></div>
-                
-                <div>Phone: <input type="text" 
-                onChange={handleForm} 
-                value={form.phone} 
-                name='phone' />
-                <span style={errorStyle}>{errors.phone?.message}</span>
+            <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl my-5">
+                <h1 className="text-3xl font-semibold text-center text-black-700">Create a lecturer</h1>
+
+            <form className="space-y-4" onSubmit={submitForm}>
+                <div>
+                    <label className="label">
+                        <span className="text-base label-text">Name</span>
+                    </label>
+                    <input type="text" placeholder="John Doe" 
+                    className="w-full input input-bordered input-primary" onChange={handleForm} 
+                    value={form.name} 
+                    name='name'/><span 
+                    style={errorStyle}>{errors.name?.message}</span>
                 </div>
 
-                <div>Email: <input type="text" 
-                onChange={handleForm} 
-                value={form.email} 
-                name='email' />
-                <span style={errorStyle}>{errors.email?.message}</span>
+                <div>
+                    <label className="label">
+                        <span className="text-base label-text">Address</span>
+                    </label>
+                    <input type="text" placeholder="Road 99" 
+                    className="w-full input input-bordered input-primary" onChange={handleForm} 
+                    value={form.address} 
+                    name='address'/><span 
+                    style={errorStyle}>{errors.address?.message}</span>
+                </div>
+
+                <div>
+                    <label className="label">
+                        <span className="text-base label-text">Phone number</span>
+                    </label>
+                    <input type="text" placeholder="083 111 2222" 
+                    className="w-full input input-bordered input-primary" onChange={handleForm} 
+                    value={form.phone} 
+                    name='phone'/><span 
+                    style={errorStyle}>{errors.phone?.message}</span>
                 </div>
                 
+                <div>
+                    <label className="label">
+                        <span className="text-base label-text">Email</span>
+                    </label>
+                    <input type="text" placeholder="JohnDoe@gmail.com" 
+                    className="w-full input input-bordered input-primary" onChange={handleForm} 
+                    value={form.email} 
+                    name='email'/><span 
+                    style={errorStyle}>{errors.email?.message}</span>
+                </div>
+
 {/* 
                 <div>Start date: <input type="datetime-local" onChange={handleForm} value={form.start_date} name='start_date' /></div>
                 <div>End date: <input type="datetime-local" onChange={handleForm} value={form.end_date} name='end_date' /></div> */}
 
-                <input type="submit"/>
+                <button type="submit" className="btn btn-outline btn-success mt-4">Submit</button>
+
+                <Link to="/lecturers"><button type="submit" className="btn btn-outline btn-error mt-4 ms-4">Cancel</button></Link>
             </form>
+        </div>
 
         </>
     );

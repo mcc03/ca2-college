@@ -1,6 +1,7 @@
 import { useState} from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Create = () => {
 
@@ -78,39 +79,74 @@ const Create = () => {
 
         // 'errors.title?.message': if there is a title show msg
         <>
-            <h2>Create course</h2>
-            <form onSubmit={submitForm}>
-                <div>Title: <input type="text" onChange={handleForm} value={form.title} name='title'/><span style={errorStyle}>{errors.title?.message}</span></div>
-                
-                <div>Code: <input type="text" onChange={handleForm} value={form.code} name='code' /><span style={errorStyle}>{errors.code?.message}</span></div>
-                
-                <div>Description: <input type="text" 
-                onChange={handleForm} 
-                value={form.description} 
-                name='description' />
-                <span style={errorStyle}>{errors.description?.message}</span>
+        <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl my-5">
+        <h1 className="text-3xl font-semibold text-center text-black-700">Create a course</h1>
+            <form className="space-y-4" onSubmit={submitForm}>
+
+                <div>
+                    <label className="label">
+                        <span className="text-base label-text">Title</span>
+                    </label>
+                    <input type="text" placeholder="New Course" 
+                    className="w-full input input-bordered input-primary" onChange={handleForm} 
+                    value={form.title} 
+                    name='title'/><span 
+                    style={errorStyle}>{errors.title?.message}</span>
                 </div>
 
-                <div>Points: <input type="text" 
-                onChange={handleForm} 
-                value={form.points} 
-                name='points' />
-                <span style={errorStyle}>{errors.points?.message}</span>
+                <div>
+                    <label className="label">
+                        <span className="text-base label-text">Code</span>
+                    </label>
+                    <input type="text" placeholder="NA000" 
+                    className="w-full input input-bordered input-primary" onChange={handleForm} 
+                    value={form.code} 
+                    name='code'/><span 
+                    style={errorStyle}>{errors.code?.message}</span>
                 </div>
 
-                <div>Level: <input type="text" 
-                onChange={handleForm} 
-                value={form.level} 
-                name='level' />
-                <span style={errorStyle}>{errors.level?.message}</span>
+                <div>
+                    <label className="label">
+                        <span className="text-base label-text">Description</span>
+                    </label>
+                    <input type="text" placeholder="This course is about..." 
+                    className="w-full input input-bordered input-primary" onChange={handleForm} 
+                    value={form.description} 
+                    name='description'/><span 
+                    style={errorStyle}>{errors.description?.message}</span>
                 </div>
+                
+                <div>
+                    <label className="label">
+                        <span className="text-base label-text">Points</span>
+                    </label>
+                    <input type="text" placeholder="300" 
+                    className="w-full input input-bordered input-primary" onChange={handleForm} 
+                    value={form.points} 
+                    name='points'/><span 
+                    style={errorStyle}>{errors.points?.message}</span>
+                </div>
+
+                <div>
+                    <label className="label">
+                        <span className="text-base label-text">Level</span>
+                    </label>
+                    <input type="text" placeholder="8" 
+                    className="w-full input input-bordered input-primary" onChange={handleForm} 
+                    value={form.level} 
+                    name='level'/><span 
+                    style={errorStyle}>{errors.level?.message}</span>
+                </div>
+
 {/* 
                 <div>Start date: <input type="datetime-local" onChange={handleForm} value={form.start_date} name='start_date' /></div>
                 <div>End date: <input type="datetime-local" onChange={handleForm} value={form.end_date} name='end_date' /></div> */}
 
-                <input type="submit"/>
-            </form>
+                <button type="submit" className="btn btn-outline btn-success mt-4">Submit</button>
 
+                <Link to="/courses"><button type="submit" className="btn btn-outline btn-error mt-4 ms-4">Cancel</button></Link>
+            </form>
+        </div>
         </>
     );
 }

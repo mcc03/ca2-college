@@ -1,4 +1,8 @@
 import LoginForm from "../components/LoginForm";
+import { Link } from "react-router-dom";
+
+//components
+import HomeList from "../components/HomeList";
 
 const Home = ({ authenticated, onAuthenticated }) => {
     return (
@@ -7,6 +11,9 @@ const Home = ({ authenticated, onAuthenticated }) => {
             {(!authenticated) ? (
                 <LoginForm authenticated={authenticated} onAuthenticated={onAuthenticated} />
             ) : (<p>You are authenticated</p>)}
+
+            <HomeList/>
+
         </>
     );
 }

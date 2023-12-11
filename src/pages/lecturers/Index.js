@@ -31,7 +31,7 @@ const Index = () => {
 
         //looping through all courses, adding course to list that doesnt have the id
         let updatedLecturers = lecturers.filter((lecture) => {
-            return lecture._id !== id;
+            return lecture.id !== id;
         })
 
         setLecturers(updatedLecturers);

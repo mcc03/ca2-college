@@ -31,7 +31,7 @@ const Index = () => {
 
         //looping through all enrolemts, adding enrolemt to list that doesnt have the id
         let updatedEnrolments = enrolments.filter((enrolment) => {
-            return enrolment._id !== id;
+            return enrolment.id !== id;
         })
 
         setEnrolments(updatedEnrolments);

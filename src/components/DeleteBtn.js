@@ -26,40 +26,44 @@ const DeleteBtn = ({id, resource, anotherResource, deleteCallBack, data}) => {
                     { headers: { Authorization: `Bearer ${token}` } }
                 )
             );
+
+            // log the contents of listOfDeleteRequests
+        axios.all(listOfDeleteRequests)
+        .then((response) => {
+            axios.delete(`https://college-api.vercel.app/api/${resource}/${id}`, {
+                headers: { Authorization: `Bearer ${token}` }
+            })
+                .then((response) => {
+                    //if anotherResource equals 0, delete resource
+                    deleteCallBack(id);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+        }
+        else {
+                        axios.delete(`https://college-api.vercel.app/api/${resource}/${id}`, {
+                            headers: {
+                                Authorization: `Bearer ${token}`
+                            }
+                        })
+                            .then(response => {
+                                console.log(response.data);
+                                deleteCallBack(id);
+                                
+                                // window.location.reload()
+                            })
+                            .catch(err => {
+                                console.error(err.response.data);
+                            })
         }
 
-        // log the contents of listOfDeleteRequests
-        axios.all(listOfDeleteRequests)
-            .then((response) => {
-                axios.delete(`https://college-api.vercel.app/api/${resource}/${id}`, {
-                    headers: { Authorization: `Bearer ${token}` }
-                })
-                    .then((response) => {
-                        //if anotherResource equals 0, delete resource
-                        if (data[anotherResource] == 0) {
-                            axios.delete(`https://college-api.vercel.app/api/${resource}/${id}`, {
-                                headers: {
-                                    Authorization: `Bearer ${token}`
-                                }
-                            })
-                                .then(response => {
-                                    console.log(response.data);
-                                    deleteCallBack(id);
-                                    navigate(`/${resource}`);
-                                    // window.location.reload()
-                                })
-                                .catch(err => {
-                                    console.error(err.response.data);
-                                })
-                        }
-                    })
-                    .catch((error) => {
-                        console.log(error);
-                    });
-            })
-            .catch(error => {
-                console.error(error);
-            });
+        
     }
 
     return (

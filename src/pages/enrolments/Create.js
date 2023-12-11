@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Create = () => {
 
@@ -138,46 +139,59 @@ const Create = () => {
 
         // 'errors.title?.message': if there is a title show msg
         <>
-            <h2>Create enrolment</h2>
+        <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl my-5">
+            <h1 className="text-3xl font-semibold text-center text-black-700">Create an enrolment</h1>
+
             <form onSubmit={submitForm}>
 
-                <div for="course_id">Select a course_id:
-                    <select name="course_id" onChange={handleForm}>
+            <div>
+                    <label className="label">
+                        <span className="text-base label-text">Select course</span>
+                    </label>
+                    <select className="w-full input input-bordered input-primary" name="course_id" onChange={handleForm}>
                         {courseOptions}
                     </select>
                 </div>
-                
-                
-                <div for="lecturer_id">Select a lecturer_id:
-                    <select name="lecturer_id" onChange={handleForm}>
+
+                <div>
+                    <label className="label">
+                        <span className="text-base label-text">Select lecturer</span>
+                    </label>
+                    <select className="w-full input input-bordered input-primary" name="lecturer_id" onChange={handleForm}>
                         {lecturerOptions}
                     </select>
                 </div>
-                
-                <div>Date: <input type="date" 
+
+                <div>
+                    <label className="label">
+                        <span className="text-base label-text">Select date</span>
+                    </label>
+                    <input className="w-full input input-bordered input-primary" 
+                    type="date" 
                     onChange={handleForm} 
                     value={form.date} 
                     name='date' />
                     <span style={errorStyle}>{errors.date?.message}</span>
                 </div>
 
-                <div>Time: <input type="time" 
+                <div>
+                    <label className="label">
+                        <span className="text-base label-text">Select time</span>
+                    </label>
+                    <input className="w-full input input-bordered input-primary" 
+                    type="time"
                     onChange={handleForm} 
                     value={form.time} 
                     name='time' />
                     <span style={errorStyle}>{errors.time?.message}</span>
                 </div>
 
-                {/* <div>Status: <input type="text" 
-                onChange={handleForm} 
-                value={form.status} 
-                name='status' />
-                <span style={errorStyle}>{errors.status?.message}</span>
-                </div> */}
-
-                {/* dropdown menu */}
-                <div for="status">Select a status:
-                    <select name="status" onChange={handleForm}>
+                <div for="status">
+                    <label className="label">
+                        <span className="text-base label-text">Select status</span>
+                    </label>
+                    <select className="w-full input input-bordered input-primary" 
+                    name="status" onChange={handleForm}>
                     <option value="assigned">Assigned</option>
                     <option value="interested">Interested</option>
                     <option value="associate">Associate</option>
@@ -185,8 +199,11 @@ const Create = () => {
                     </select>
                 </div>
 
-                <input type="submit"/>
+                <button type="submit" className="btn btn-outline btn-success mt-4">Submit</button>
+
+                <Link to="/enrolments"><button type="submit" className="btn btn-outline btn-error mt-4 ms-4">Cancel</button></Link>
             </form>
+        </div>
         </>
     );
 }
