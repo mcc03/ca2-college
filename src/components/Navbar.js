@@ -12,7 +12,7 @@ const Navbar = ({ authenticated, onAuthenticated }) => {
 	return (
 
 		<>
-			<div className="navbar bg-base-300">
+			<div className="navbar bg-slate-50">
 				<div className="navbar-start">
 					<div className="dropdown">
 						<label tabIndex={0} className="btn btn-ghost btn-circle">
@@ -33,7 +33,7 @@ const Navbar = ({ authenticated, onAuthenticated }) => {
 						</label>
 						<ul
 							tabIndex={0}
-							className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+							className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 bg-slate-50"
 						>      
                             <li>
                                 <Link to='/courses'>Courses</Link>
@@ -55,7 +55,7 @@ const Navbar = ({ authenticated, onAuthenticated }) => {
 
 				{/* turnery syntax: () ? () : () */}
 				{(authenticated) ? (
-					<button className='btn' onClick={logout}>Logout</button>
+					<button className='btn bg-slate-50' onClick={logout}>Logout</button>
 					) : ""
 				}
       

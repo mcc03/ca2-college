@@ -138,8 +138,8 @@ const Create = () => {
     return (
 
         // 'errors.title?.message': if there is a title show msg
-        <>
-        <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl my-5">
+        <div className="bg-slate-100">
+        <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl my-10">
             <h1 className="text-3xl font-semibold text-center text-black-700">Create an enrolment</h1>
 
             <form onSubmit={submitForm}>
@@ -148,7 +148,7 @@ const Create = () => {
                     <label className="label">
                         <span className="text-base label-text">Select course</span>
                     </label>
-                    <select className="w-full input input-bordered input-primary" name="course_id" onChange={handleForm}>
+                    <select className="w-full input input-bordered input-primary bg-white" name="course_id" onChange={handleForm}>
                         {courseOptions}
                     </select>
                 </div>
@@ -157,7 +157,7 @@ const Create = () => {
                     <label className="label">
                         <span className="text-base label-text">Select lecturer</span>
                     </label>
-                    <select className="w-full input input-bordered input-primary" name="lecturer_id" onChange={handleForm}>
+                    <select className="w-full input input-bordered input-primary bg-white" name="lecturer_id" onChange={handleForm}>
                         {lecturerOptions}
                     </select>
                 </div>
@@ -166,7 +166,7 @@ const Create = () => {
                     <label className="label">
                         <span className="text-base label-text">Select date</span>
                     </label>
-                    <input className="w-full input input-bordered input-primary" 
+                    <input className="w-full input input-bordered input-primary bg-white" 
                     type="date" 
                     onChange={handleForm} 
                     value={form.date} 
@@ -178,7 +178,7 @@ const Create = () => {
                     <label className="label">
                         <span className="text-base label-text">Select time</span>
                     </label>
-                    <input className="w-full input input-bordered input-primary" 
+                    <input className="w-full input input-bordered input-primary bg-white" 
                     type="time"
                     onChange={handleForm} 
                     value={form.time} 
@@ -190,7 +190,7 @@ const Create = () => {
                     <label className="label">
                         <span className="text-base label-text">Select status</span>
                     </label>
-                    <select className="w-full input input-bordered input-primary" 
+                    <select className="w-full input input-bordered input-primary bg-white" 
                     name="status" onChange={handleForm}>
                     <option value="assigned">Assigned</option>
                     <option value="interested">Interested</option>
@@ -204,7 +204,7 @@ const Create = () => {
                 <Link to="/enrolments"><button type="submit" className="btn btn-outline btn-error mt-4 ms-4">Cancel</button></Link>
             </form>
         </div>
-        </>
+        </div>
     );
 }
 

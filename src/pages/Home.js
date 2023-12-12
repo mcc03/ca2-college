@@ -7,10 +7,10 @@ import HomeList from "../components/HomeList";
 const Home = ({ authenticated, onAuthenticated }) => {
     return (
         <>
-            <h2>This is home</h2>
+            {/* <h2>This is home</h2> */}
             {(!authenticated) ? (
                 <LoginForm authenticated={authenticated} onAuthenticated={onAuthenticated} />
-            ) : (<p>You are authenticated</p>)}
+            ) : (<p></p>)}
 
             <HomeList/>
 

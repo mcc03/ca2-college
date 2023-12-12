@@ -39,28 +39,51 @@ const Index = () => {
 
     if(lecturers.length === 0) return <h3>There are no lecturers</h3>;
 
-    const lecturersList = lecturers.map(lecturers => {
+    const lecturersList = lecturers.map((lecturers, index) => {
+
+        const colors = [  
+            'outline-blue-200',
+            'outline-blue-300',
+            'outline-blue-400',
+            'outline-blue-500',
+    ];
+        const selectedColor = colors[index % colors.length];
+
         return (
-            <div className="ms-2" key={lecturers._id}>
+            <div key={lecturers.id} className={`card bg-white shadow-xl text-black min-w-[20%] outline outline-2 ${selectedColor}`}>
+                <div className="card-body m-0 pb-0">
+                    <h2 className="card-title">{lecturers.name}</h2>
+                    <p>Address: {lecturers.address}</p>
+                    <p>Phone: {lecturers.phone}</p>
+                    <p>Email: {lecturers.email}</p>
+                </div>
 
-                <p><b>Name:</b> 
-                <Link to={`/lecturers/${lecturers.id}`}> {lecturers.name}</Link></p>
-                <p><b>Address :</b> {lecturers.address}</p>
-                <b><p>Email: {lecturers.email}</p></b>
-                <b><p>Phone: {lecturers.phone}</p></b>
-
-                <DeleteBtn resource="lecturers" anotherResource="enrolments" id={lecturers.id} deleteCallBack={removeLecture} data={lecturers}/>
-
-                <hr/>
+                <div className="card-actions justify-end p-2">
+                <Link className="btn btn-xs btn-outline btn-primary mt-0 pt-0" to={`/lecturers/${lecturers.id}`}>View</Link>
+                    <div className="btn btn-xs btn-outline btn-error">
+                        <DeleteBtn resource="lecturers" anotherResource="enrolments" id={lecturers.id} deleteCallBack={removeLecture} data={lecturers}/>
+                    </div>
+                </div> 
             </div>
         )
     });
 
     return (
-        <>        
-            <h1 className="mb-5">hello from lecturers</h1>
-            {lecturersList}
-        </>
+        <div className="bg-slate-100 py-10">        
+            <div className="flex justify-center gap-2 items-baseline mb-5">      
+                <h1 className="text-center text-black text-4xl">Lecturers</h1>
+                <Link to='create' className="btn btn-sm btn-circle btn-success">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                </Link>
+            </div>  
+
+
+            <div key={lecturers._id} className="flex flex-wrap gap-4 justify-center">
+                {lecturersList}
+            </div>
+        </div>
 
     );
 

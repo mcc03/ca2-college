@@ -77,8 +77,8 @@ const Create = () => {
     return (
 
         // 'errors.title?.message': if there is a title show msg
-        <>
-            <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl my-5">
+        <div className="bg-slate-100">
+            <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl my-10">
                 <h1 className="text-3xl font-semibold text-center text-black-700">Create a lecturer</h1>
 
             <form className="space-y-4" onSubmit={submitForm}>
@@ -87,7 +87,7 @@ const Create = () => {
                         <span className="text-base label-text">Name</span>
                     </label>
                     <input type="text" placeholder="John Doe" 
-                    className="w-full input input-bordered input-primary" onChange={handleForm} 
+                    className="w-full input input-bordered input-primary bg-white" onChange={handleForm} 
                     value={form.name} 
                     name='name'/><span 
                     style={errorStyle}>{errors.name?.message}</span>
@@ -98,7 +98,7 @@ const Create = () => {
                         <span className="text-base label-text">Address</span>
                     </label>
                     <input type="text" placeholder="Road 99" 
-                    className="w-full input input-bordered input-primary" onChange={handleForm} 
+                    className="w-full input input-bordered input-primary bg-white" onChange={handleForm} 
                     value={form.address} 
                     name='address'/><span 
                     style={errorStyle}>{errors.address?.message}</span>
@@ -109,7 +109,7 @@ const Create = () => {
                         <span className="text-base label-text">Phone number</span>
                     </label>
                     <input type="text" placeholder="083 111 2222" 
-                    className="w-full input input-bordered input-primary" onChange={handleForm} 
+                    className="w-full input input-bordered input-primary bg-white" onChange={handleForm} 
                     value={form.phone} 
                     name='phone'/><span 
                     style={errorStyle}>{errors.phone?.message}</span>
@@ -120,7 +120,7 @@ const Create = () => {
                         <span className="text-base label-text">Email</span>
                     </label>
                     <input type="text" placeholder="JohnDoe@gmail.com" 
-                    className="w-full input input-bordered input-primary" onChange={handleForm} 
+                    className="w-full input input-bordered input-primary bg-white" onChange={handleForm} 
                     value={form.email} 
                     name='email'/><span 
                     style={errorStyle}>{errors.email?.message}</span>
@@ -136,7 +136,7 @@ const Create = () => {
             </form>
         </div>
 
-        </>
+        </div>
     );
 }
 
