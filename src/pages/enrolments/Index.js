@@ -41,10 +41,10 @@ const Index = () => {
 
     const enrolmentsList = enrolments.map((enrolments, index) => {
         const colors = [  
-            'outline-blue-200',
-            'outline-blue-300',
-            'outline-blue-400',
-            'outline-blue-500',
+            'outline-yellow-200',
+            'outline-yellow-300',
+            'outline-yellow-400',
+            'outline-yellow-500',
     ];
         const selectedColor = colors[index % colors.length];
 
@@ -70,7 +70,7 @@ const Index = () => {
         <div className="bg-slate-100 py-10">        
             <div className="flex justify-center gap-2 items-baseline mb-5">      
                 <h1 className="text-center text-black text-4xl">Enrolments</h1>
-                <Link to='create' className="btn btn-sm btn-circle btn-success">
+                <Link to='create' className="btn btn-sm btn-circle btn-warning">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                     </svg>

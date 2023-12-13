@@ -42,10 +42,10 @@ const Index = () => {
     const lecturersList = lecturers.map((lecturers, index) => {
 
         const colors = [  
-            'outline-blue-200',
-            'outline-blue-300',
-            'outline-blue-400',
-            'outline-blue-500',
+            'outline-green-200',
+            'outline-green-300',
+            'outline-green-400',
+            'outline-green-500',
     ];
         const selectedColor = colors[index % colors.length];
 

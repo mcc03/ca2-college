@@ -8,7 +8,7 @@ const LoginForm = ({ authenticated, onAuthenticated }) => {
     };
 
     const [form, setForm] = useState({
-        email: "mcc2@bloggs.com",
+        email: "mcc5@bloggs.com",
         password: "secret"
         });
 
@@ -39,13 +39,42 @@ const LoginForm = ({ authenticated, onAuthenticated }) => {
     };
 
     return(
-        <>
-            Email: <input onChange={handleForm} type="text" name="email" value={form.email} /> <br/>
-            Password: <input onChange={handleForm} type="password" name="password" value={form.password} />
+        <div className="bg-slate-100 py-10">
+            <div className="relative flex flex-col justify-center overflow-hidden">
+                <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-lg">
+                    <h1 className="text-3xl font-semibold text-center text-black">Login</h1>
+                    <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                        <div>
+                            <label className="label">
+                            <span className="text-gray-400 text-sm label-text ">Email</span>
+                            </label>
+                            <input 
+                                className="w-full input input-bordered input-primary" 
+                                onChange={handleForm} 
+                                type="text" 
+                                name="email" 
+                                value={form.email} />
+                        </div>
 
-            <button type="submit" onClick={handleClick}>Login</button>
-            <p style={errorStyle}>{errorMessage}</p>
-        </>
+                        <div>
+                            <label className="label">
+                            <span className="text-gray-400 text-sm label-text">Password</span>
+                            </label>
+                            <input className="w-full input input-bordered input-primary" 
+                                onChange={handleForm} 
+                                type="password" 
+                                name="password" 
+                                value={form.password} />
+                        </div>
+
+                        <div>    
+                            <button className="btn btn-primary text-black text-sm" type="submit" onClick={handleClick}>Login</button>
+                            <p style={errorStyle}>{errorMessage}</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     );
 }
 

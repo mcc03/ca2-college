@@ -2,6 +2,9 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+// components
+import DeleteBtn from "../../components/DeleteBtn";
+
 const Show = () => {
 
     let token = localStorage.getItem('token');
@@ -30,11 +33,84 @@ const Show = () => {
             })
     }, [id])
 
-    if(!enrolments) return <h4>enrolment not found</h4>
+    const removeEnrolment = (id) => {
+        console.log("Deleted: ", id)
+
+        //looping through all enrolemts, adding enrolemt to list that doesnt have the id
+        let updatedEnrolments = enrolments.filter((enrolment) => {
+            return enrolment.id !== id;
+        })
+
+        setEnrolments(updatedEnrolments);
+    };
+
+    if(!enrolments) return <h4>Enrolment not found</h4>
 
     return (
-        <>
-            <div className="ms-2" key={enrolments._id}>
+
+<div className="flex items-center justify-center bg-slate-100 py-10">
+            <div className="card w-[64rem] bg-white shadow-xl text-black">
+                <div className="card-body">
+                    <h1 className="card-title mb-2 text-4xl">{enrolments.course.title}</h1>
+                    <hr/>
+
+                    <label className="text-gray-400">Lecturer</label>
+                    <p className="card-title mb-2 text-lg">{enrolments.lecturer.name}</p>
+                    <hr/>
+
+                    <label className="text-gray-400">Course description</label>
+                    <p className="mb-2 text-lg">{enrolments.course.description}</p>
+                    <hr/>
+
+                    <label className="text-gray-400">Course code</label>
+                    <p className="mb-2 text-lg">{enrolments.course.code}</p>
+                    <hr/>
+
+                    <label className="text-gray-400">Enrolment status</label>
+                    <p className="mb-2 text-lg capitalize">{enrolments.status}</p>
+                    <hr/>
+
+                    <div className="collapse bg-white">
+                        <input type="checkbox" /> 
+                        <label className="collapse-title text-gray-400 flex items-center">
+                            Additional information
+
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 ms-2">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                </svg>
+                            </span>
+                        </label>
+                        
+                        <div className="collapse-content"> 
+                            <p><b>Obj ID :</b> {enrolments.id}</p>
+                            <p><b>Course ID :</b> {enrolments.course_id}</p>
+                            <p><b>Lecturer ID :</b> {enrolments.lecturer_id}</p>
+                            <p><b>Created at :</b> {enrolments.created_at}</p>
+                        </div>
+                    </div>
+
+                    <div className="flex">
+                    <div className="card-actions justify-start p-2 mt-4">
+                        <Link className="btn btn-outline btn-primary mt-0 pt-0" to={`/enrolments/${enrolments.id}/edit`}>Edit</Link>
+
+                        {/* <div className="btn btn-outline btn-error">
+                            <DeleteBtn resource="enrolments" anotherResource="enrolments" id={enrolments.id} deleteCallBack={removeEnrolment} data={enrolments}/>
+                        </div> */}
+                    </div> 
+
+                        <div className="card-actions justify-end p-2 mt-4">
+                        <Link className="btn btn-outline btn-primary mt-0 pt-0" to={`/enrolments/${enrolments.id - 1}`}>Previous</Link>
+                        <Link className="btn btn-outline btn-primary mt-0 pt-0" to={`/enrolments/${enrolments.id + 1}`}>Next</Link>
+                        </div>
+                    </div>
+
+
+                </div>
+ 
+            </div>
+            
+                        {/* <div className="ms-2" key={enrolments._id}>
                 <p><b>Obj ID :</b> {enrolments.id}</p>
                 <p><b>Course ID :</b> {enrolments.course_id}</p>
                 <p><b>Lecturer Name :</b> {enrolments.lecturer.name}  <span className='text-blue-500'>(ID: {enrolments.lecturer_id})</span></p>
@@ -43,8 +119,12 @@ const Show = () => {
                 <p><b>Description: </b>{enrolments.course.description}</p>
                 <p><b>Status: </b>{enrolments.status}</p> 
 
-            </div>
-        </>
+            </div> */}
+        </div>
+
+
+
+        
     )
 }
 

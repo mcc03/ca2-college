@@ -138,8 +138,8 @@ const Create = () => {
     return (
 
         // 'errors.title?.message': if there is a title show msg
-        <div className="bg-slate-100">
-        <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl my-10">
+        <div className="bg-slate-100 py-10">
+        <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl">
             <h1 className="text-3xl font-semibold text-center text-black-700">Create an enrolment</h1>
 
             <form onSubmit={submitForm}>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Edit = () => {
 
@@ -149,69 +150,115 @@ const Edit = () => {
     }); 
 
     return (
-        <>
-            <h2>Edit Enrolment</h2>
+        <div className="bg-slate-100">
+        <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl my-10">
 
-            <form onSubmit={submitForm}>
-                {/* <div>Name: <input type="text" onChange={handleForm} value={form.name} name='name'/><span style={errorStyle}>{errors.name?.message}</span></div> */}
+        <form className="space-y-4" onSubmit={submitForm}>
 
-                <div for="course_id">Select Course:
-                    <select name="course_id" onChange={handleForm} value={form.course_id}>
+        <h1 className="text-3xl font-semibold text-center text-black">Edit enrolment</h1>
+            
+        <div>
+                    <label className="label">
+                        <span className="text-base label-text">Edit course</span>
+                    </label>
+                    <select className="w-full input input-bordered input-primary bg-white" name="course_id" onChange={handleForm}>
                         {courseOptions}
-                    </select><span style={errorStyle}>{errors.name?.message}</span>
-                </div>
-
-                <div for="lecturer_id">Select Lecturer:
-                    <select name="lecturer_id" onChange={handleForm} value={form.lecturer_id}>
-                        {lecturerOptions}
-                    </select><span style={errorStyle}>{errors.name?.message}</span>
-                </div>
-                
-                <div>Title: <input type="text" onChange={handleForm} value={form.title} name='title' /><span style={errorStyle}>{errors.title?.message}</span></div>
-                
-                <div>Code: <input type="text" 
-                onChange={handleForm} 
-                value={form.code} 
-                name='code' />
-                <span style={errorStyle}>{errors.code?.message}</span>
-                </div>
-
-                <div>Description: <input type="text" 
-                onChange={handleForm} 
-                value={form.description} 
-                name='description' />
-                <span style={errorStyle}>{errors.description?.message}</span>
-                </div>
-
-                {/* dropdown menu */}
-                <div for="status" 
-                value={form.status} 
-                name='staus'>Select a status:
-                    <select name="status" onChange={handleForm}>
-                        <option value="assigned">Assigned</option>
-                        <option value="interested">Interested</option>
-                        <option value="associate">Associate</option>
-                        <option value="career_break">Career break</option>
                     </select>
                 </div>
-                
-                <div>Date: <input type="date" 
+
+                <div>
+                    <label className="label">
+                        <span className="text-base label-text">Edit lecturer</span>
+                    </label>
+                    <select className="w-full input input-bordered input-primary bg-white" name="lecturer_id" onChange={handleForm}>
+                        {lecturerOptions}
+                    </select>
+                </div>
+
+                <div>
+                    <label className="label">
+                        <span className="text-base label-text">Edit title</span>
+                    </label>
+                        <input 
+                        type="text" 
+                        placeholder="New title" 
+                        className="w-full input input-bordered input-primary bg-white" 
+                        onChange={handleForm} 
+                        value={form.title} 
+                        name='title'/><span 
+                        style={errorStyle}>{errors.title?.message}</span>
+                </div>
+
+                <div>
+                    <label className="label">
+                        <span className="text-base label-text">Code</span>
+                    </label>
+                        <input 
+                        type="text" 
+                        placeholder="NA000" 
+                        className="w-full input input-bordered input-primary bg-white" 
+                        onChange={handleForm} 
+                        value={form.code} 
+                        name='code'/><span 
+                        style={errorStyle}>{errors.code?.message}</span>
+                </div>
+
+                <div>
+                    <label className="label">
+                        <span className="text-base label-text">Description</span>
+                    </label>
+                        <input 
+                        type="text" 
+                        placeholder="New description..." 
+                        className="w-full input input-bordered input-primary bg-white" 
+                        onChange={handleForm} 
+                        value={form.description} 
+                        name='description'/><span 
+                        style={errorStyle}>{errors.description?.message}</span>
+                </div>
+
+                <div for="status">
+                    <label className="label">
+                        <span className="text-base label-text">Select status</span>
+                    </label>
+                    <select className="w-full input input-bordered input-primary bg-white" 
+                    name="status" onChange={handleForm}>
+                    <option value="assigned">Assigned</option>
+                    <option value="interested">Interested</option>
+                    <option value="associate">Associate</option>
+                    <option value="career_break">Career break</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label className="label">
+                        <span className="text-base label-text">Edit date</span>
+                    </label>
+                    <input className="w-full input input-bordered input-primary bg-white" 
+                    type="date" 
                     onChange={handleForm} 
                     value={form.date} 
                     name='date' />
                     <span style={errorStyle}>{errors.date?.message}</span>
                 </div>
 
-                <div>Time: <input type="time" 
+                <div>
+                    <label className="label">
+                        <span className="text-base label-text">Edit time</span>
+                    </label>
+                    <input className="w-full input input-bordered input-primary bg-white" 
+                    type="time" 
                     onChange={handleForm} 
                     value={form.time} 
                     name='time' />
                     <span style={errorStyle}>{errors.time?.message}</span>
                 </div>
 
-                <input type="submit"/>
-            </form>
-        </>
+            <button type="submit" className="btn btn-outline btn-success mt-4">Submit</button>
+            <Link to="/courses"><button type="submit" className="btn btn-outline btn-error mt-4 ms-4">Cancel</button></Link>
+        </form>
+        </div>
+    </div>
     );
 }
 

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Edit = () => {
 
@@ -94,33 +95,74 @@ const Edit = () => {
     if(!lecturers) return <h4>Lecturer not found</h4>
 
     return (
-        <>
-            <h2>Edit Courses</h2>
+        <div className="bg-slate-100">
+            <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl my-10">
 
-            <form onSubmit={submitForm}>
-                <div>Name: <input type="text" onChange={handleForm} value={form.name} name='name'/><span style={errorStyle}>{errors.name?.message}</span></div>
-                
-                <div>Address: <input type="text" onChange={handleForm} value={form.address} name='address' /><span style={errorStyle}>{errors.address?.message}</span></div>
-                
-                <div>Phone: <input type="text" 
-                onChange={handleForm} 
-                value={form.phone} 
-                name='phone' />
-                <span style={errorStyle}>{errors.phone?.message}</span>
-                </div>
+            <form className="space-y-4" onSubmit={submitForm}>
 
-                <div>Email: <input type="text" 
-                onChange={handleForm} 
-                value={form.email} 
-                name='email' />
-                <span style={errorStyle}>{errors.email?.message}</span>
-                </div>
+            <h1 className="text-3xl font-semibold text-center text-black">Edit lecturer</h1>
                 
-                {/* <div>Start date: <input type="datetime-local" onChange={handleForm} value={form.start_date} name='start_date' /></div>
-                <div>End date: <input type="datetime-local" onChange={handleForm} value={form.end_date} name='end_date' /></div> */}
-                <input type="submit"/>
+                    <div>
+                        <label className="label">
+                            <span className="text-base label-text">Name</span>
+                        </label>
+                            <input 
+                            type="text" 
+                            placeholder="John Doe" 
+                            className="w-full input input-bordered input-primary bg-white" 
+                            onChange={handleForm} 
+                            value={form.name} 
+                            name='name'/><span 
+                            style={errorStyle}>{errors.name?.message}</span>
+                    </div>
+
+                    <div>
+                        <label className="label">
+                            <span className="text-base label-text">Address</span>
+                        </label>
+                            <input 
+                            type="text" 
+                            placeholder="Road 99" 
+                            className="w-full input input-bordered input-primary bg-white" 
+                            onChange={handleForm} 
+                            value={form.address} 
+                            name='address'/><span 
+                            style={errorStyle}>{errors.address?.message}</span>
+                    </div>
+
+                    <div>
+                        <label className="label">
+                            <span className="text-base label-text">Phone number</span>
+                        </label>
+                            <input 
+                            type="text" 
+                            placeholder="0831459546" 
+                            className="w-full input input-bordered input-primary bg-white" 
+                            onChange={handleForm} 
+                            value={form.phone} 
+                            name='phone'/><span 
+                            style={errorStyle}>{errors.phone?.message}</span>
+                    </div>
+
+                    <div>
+                        <label className="label">
+                            <span className="text-base label-text">Email</span>
+                        </label>
+                            <input 
+                            type="text" 
+                            placeholder="JohnDoe@gmail.com" 
+                            className="w-full input input-bordered input-primary bg-white" 
+                            onChange={handleForm} 
+                            value={form.email} 
+                            name='email'/><span 
+                            style={errorStyle}>{errors.email?.message}</span>
+                    </div>
+
+                <button type="submit" className="btn btn-outline btn-success mt-4">Submit</button>
+                <Link to="/courses"><button type="submit" className="btn btn-outline btn-error mt-4 ms-4">Cancel</button></Link>
             </form>
-        </>
+            </div>
+        </div>
     );
 }
 

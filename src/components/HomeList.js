@@ -2,24 +2,24 @@ import { Link } from "react-router-dom";
 
 const HomeList = () => {
     return (
-    <div className="bg-slate-50 py-5">
-        <div className="flex justify-center gap-4">
-            <ul className="menu bg-base-200 w-56 rounded-box bg-white outline-double outline-blue-500">
-                <header className="text-center font-bold text-lg">Courses</header>
-                <li><Link to='/courses'>View all courses</Link></li>
-                <li><Link to='/courses/create'>Create a course</Link></li>
+    <div className="bg-slate-100 py-20">
+        <div className="flex justify-center gap-4 text-center">
+            <ul className="menu rounded-box bg-white outline-double outline-blue-500 min-w-[20%]">
+            <header className="text-4xl mb-2">Courses</header>
+                <Link to='/courses' className="mb-1 hover:bg-blue-50">View all courses</Link>
+                <Link to='/courses/create' className="mb-1 hover:bg-blue-50">Create a course</Link>
             </ul>
 
-            <ul className="menu bg-base-200 w-56 rounded-box bg-white outline-double outline-green-500">
-            <header className="text-center font-bold text-lg">Lecturers</header>
-                <li><Link to='/lecturers'>View all lecturers</Link></li>
-                <li><Link to='/lecturers/create'>Create a leacturer</Link></li>
+            <ul className="menu rounded-box bg-white outline-double outline-green-500 min-w-[20%]">
+            <header className="text-4xl mb-2">Lecturers</header>
+                <Link to='/lecturers' className="mb-1 hover:bg-green-50">View all lecturers</Link>
+                <Link to='/lecturers/create' className="mb-1 hover:bg-green-50">Create a leacturer</Link>
             </ul>
 
-            <ul className="menu bg-base-200 w-56 rounded-box bg-white outline-double outline-yellow-500">
-            <header className="text-center font-bold text-lg">Enrolments</header>
-                <li><Link to='/enrolments'>View all enrolments</Link></li>
-                <li><Link to='/enrolments/create'>Create an enrolment</Link></li>
+            <ul className="menu rounded-box bg-white outline-double outline-yellow-500 min-w-[20%]">
+            <header className="text-4xl mb-2">Enrolments</header>
+                <Link to='/enrolments' className="mb-1 hover:bg-yellow-50">View all enrolments</Link>
+                <Link to='/enrolments/create' className="mb-1 hover:bg-yellow-50">Create an enrolment</Link>
             </ul>
         </div>
     </div>
