@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 const HomeList = () => {
     return (
-    <div className="bg-slate-100 py-20">
-        <div className="flex justify-center gap-4 text-center">
+    <div className="bg-slate-100 py-20 h-screen ">
+        <div className="flex justify-center gap-4 text-center ">
             <ul className="menu rounded-box bg-white outline-double outline-blue-500 min-w-[20%]">
             <header className="text-4xl mb-2">Courses</header>
                 <Link to='/courses' className="mb-1 hover:bg-blue-50">View all courses</Link>

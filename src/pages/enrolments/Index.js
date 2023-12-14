@@ -59,7 +59,22 @@ const Index = () => {
                 <div className="card-actions justify-end p-2">
                 <Link className="btn btn-xs btn-outline btn-primary mt-0 pt-0" to={`/enrolments/${enrolments.id}`}>View</Link>
                     <div className="btn btn-xs btn-outline btn-error">
-                        <DeleteBtn resource="enrolments" id={enrolments.id} deleteCallBack={removeEnrolment} data={enrolments}/>
+                    <button onClick={()=>document.getElementById(`my_modal_${enrolments.id}`).showModal()}>Delete</button>
+                        <dialog id={`my_modal_${enrolments.id}`} className="modal">
+                        <div className="modal-box">
+                            <h3 className="font-bold text-lg">Delete enrolment? {enrolments.id}</h3>
+                            <p className="py-4">Deleted enrolments cannot be restored</p>
+                            <div className="modal-action">
+                            <form method="dialog">
+                                {/* if there is a button in form, it will close the modal */}
+                                <button className="btn btn-outline btn-primary me-2">Cancel</button>
+                            <div className="btn btn-outline btn-error">
+                                <DeleteBtn resource="enrolments" anotherResource="enrolments" id={enrolments.id} deleteCallBack={removeEnrolment} data={enrolments}/>
+                            </div>
+                            </form>
+                            </div>
+                        </div>
+                        </dialog>
                     </div>
                 </div> 
             </div>
@@ -79,7 +94,9 @@ const Index = () => {
 
 
             <div className="flex flex-wrap gap-4 justify-center">
-                {enrolmentsList}
+                <div className="grid grid-cols-4 gap-4">
+                    {enrolmentsList}
+                </div>
             </div>
         </div>
 

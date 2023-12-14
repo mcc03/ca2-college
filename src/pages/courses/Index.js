@@ -42,7 +42,7 @@ const Index = () => {
 
     if(courses.length === 0) return <h3>There are no courses</h3>;
 
-    const coursesList = courses.map((courses, index) => {
+    const coursesList = courses.map((course, index) => {
         // const colorStart = 100;
         // const colorShift = colorStart * index
         const colors = [  
@@ -56,17 +56,32 @@ const Index = () => {
 
         return (
 
-            <div key={courses.id} className={`card bg-white shadow-xl text-black min-w-[20%] outline outline-2 ${selectedColor}`}>
+            <div key={course.id} className={`card bg-white shadow-xl text-black outline outline-2 ${selectedColor}`}>
                 <div className="card-body m-0 pb-0">
-                    <h2 className="card-title">{courses.title}</h2>
-                    <p>Level: {courses.level}</p>
-                    <p>Points: {courses.points}</p>
+                    <h2 className="card-title">{course.title}</h2>
+                    <p>Level: {course.level}</p>
+                    <p>Points: {course.points}</p>
                 </div>
 
                 <div className="card-actions justify-end p-2">
-                <Link className="btn btn-xs btn-outline btn-primary mt-0 pt-0" to={`/courses/${courses.id}`}>View</Link>
+                <Link className="btn btn-xs btn-outline btn-primary mt-0 pt-0" to={`/courses/${course.id}`}>View</Link>
                     <div className="btn btn-xs btn-outline btn-error">
-                        <DeleteBtn resource="courses" anotherResource="enrolments" id={courses.id} deleteCallBack={removeCourse} data={courses}/>
+                    <button onClick={()=>document.getElementById(`my_modal_${course.id}`).showModal()}>Delete</button>
+                        <dialog id={`my_modal_${course.id}`} className="modal">
+                        <div className="modal-box">
+                            <h3 className="font-bold text-lg">Delete course? {course.id}</h3>
+                            <p className="py-4">Deleted courses cannot be restored</p>
+                            <div className="modal-action">
+                            <form method="dialog">
+                                {/* if there is a button in form, it will close the modal */}
+                                <button className="btn btn-outline btn-primary me-2">Cancel</button>
+                            <div className="btn btn-outline btn-error">
+                                <DeleteBtn resource="courses" anotherResource="enrolments" id={course.id} deleteCallBack={removeCourse} data={course}/>
+                            </div>
+                            </form>
+                            </div>
+                        </div>
+                        </dialog>
                     </div>
                 </div> 
             </div>
@@ -87,7 +102,9 @@ const Index = () => {
 
 
             <div key={courses._id} className="flex flex-wrap gap-4 justify-center">
-                {coursesList}
+                <div className="grid grid-cols-4 gap-4">
+                    {coursesList}
+                </div>
             </div>
         </div>
 
