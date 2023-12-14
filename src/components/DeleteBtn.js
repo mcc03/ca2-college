@@ -2,7 +2,6 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 //creates and exports
 const DeleteBtn = ({id, resource, anotherResource, deleteCallBack, data}) => {
     let [isLoading, setIsLoading] = useState(false);

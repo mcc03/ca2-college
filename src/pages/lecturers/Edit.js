@@ -31,9 +31,9 @@ const Edit = () => {
             }
         })
             .then(response => {
-                setLecturers(response.data)
+                setLecturers(response.data.data)
                 console.log(response.data)
-                setForm(response.data)
+                setForm(response.data.data)
             })
                 .catch(err => {
                     console.error(err);

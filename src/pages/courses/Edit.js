@@ -32,9 +32,9 @@ const Edit = () => {
             }
         })
             .then(response => {
-                setCourses(response.data)
+                setCourses(response.data.data)
                 console.log(response.data)
-                setForm(response.data)
+                setForm(response.data.data)
             })
                 .catch(err => {
                     console.error(err);
@@ -109,7 +109,7 @@ const Edit = () => {
                         </label>
                             <input 
                             type="text" 
-                            placeholder="New course" 
+                            // placeholder="New course" 
                             className="w-full input input-bordered input-primary bg-white" 
                             onChange={handleForm} 
                             value={form.title} 

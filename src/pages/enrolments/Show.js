@@ -94,9 +94,25 @@ const Show = () => {
                     <div className="card-actions justify-start p-2 mt-4">
                         <Link className="btn btn-outline btn-primary mt-0 pt-0" to={`/enrolments/${enrolments.id}/edit`}>Edit</Link>
 
-                        {/* <div className="btn btn-outline btn-error">
-                            <DeleteBtn resource="enrolments" anotherResource="enrolments" id={enrolments.id} deleteCallBack={removeEnrolment} data={enrolments}/>
-                        </div> */}
+                        <div className="btn btn-outline btn-error">
+                        <button onClick={()=>document.getElementById(`my_modal_${enrolments.id}`).showModal()}>Delete</button>
+                        <dialog id={`my_modal_${enrolments.id}`} className="modal">
+                        <div className="modal-box">
+                            <h3 className="font-bold text-lg">Delete enrolment? {enrolments.id}</h3>
+                            <p className="py-4">Deleted enrolments cannot be restored</p>
+                            <div className="modal-action">
+                            <form method="dialog">
+                                {/* if there is a button in form, it will close the modal */}
+                                <button className="btn btn-outline btn-primary me-2">Cancel</button>
+                            <div className="btn btn-outline btn-error">
+                                <Link to='/enrolments'><DeleteBtn resource="enrolments" anotherResource="enrolments" id={enrolments.id} deleteCallBack={removeEnrolment} data={enrolments}/>
+                                </Link>
+                            </div>
+                            </form>
+                            </div>
+                        </div>
+                        </dialog>
+                        </div>
                     </div> 
 
                         <div className="card-actions justify-end p-2 mt-4">

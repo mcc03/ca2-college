@@ -43,9 +43,7 @@ const Create = () => {
                 included = true;
                 setErrors(prevState => ({
                     ...prevState,
-                    [field] : {
-                        message: `${field} is required`
-                    }
+                    [field] : `${field} is required`
                 }));
             }
         });
@@ -70,9 +68,17 @@ const Create = () => {
             })
             .catch(err => {
                 console.error(err);
+                setErrors(err.response.data.errors);
+                console.log("errors: ", err.response.data.errors);
+                
             })
         }   
     }
+
+    // let levelErrors = errors.level.map((err) => {
+    //     return <span style={errorStyle}>{err}</span>
+
+    // })
 
     return (
 
@@ -138,8 +144,12 @@ const Create = () => {
                         className="w-full input input-bordered input-primary bg-white" 
                         onChange={handleForm} 
                         value={form.level} 
-                        name='level'/><span 
-                        style={errorStyle}>{errors.level?.message}</span>
+                        name='level'/>
+                        
+                        <span style={errorStyle}>{errors.level}</span>
+                        
+                        
+                        
                     </div>
 
     {/* 
