@@ -13,10 +13,6 @@ const Edit = () => {
     const [form, setForm] = useState({
         course_id: "",
         lecturer_id: "",
-        title: "",
-        code: "",
-        description: "",
-        status: "",
         date: "",
         time: ""
     });
@@ -35,9 +31,9 @@ const Edit = () => {
             }
         })
             .then(response => {
-                SetEnrolments(response.data)
+                SetEnrolments(response.data.data)
                 console.log(response.data)
-                setForm(response.data)
+                setForm(response.data.data)
             })
                 .catch(err => {
                     console.error(err);
@@ -106,9 +102,11 @@ const Edit = () => {
                 included = true;
                 setErrors(prevState => ({
                     ...prevState,
-                    [field] : {
-                        message: `${field} is required`
-                    }
+                    // [field] : {
+                    //     message: `${field} is required`
+                    // }
+
+                    [field] : `${field} is required`
                 }));
             }
         });
@@ -120,7 +118,7 @@ const Edit = () => {
         e.preventDefault();
         console.log("submitted", form)
 
-        if (isRequired(['course_id', 'lecturer_id', 'title', 'code', 'description', 'status', 'date', 'time'])) {
+        if (isRequired(['course_id', 'lecturer_id', 'date', 'time'])) {
             let token = localStorage.getItem('token');
 
             axios.put(`https://college-api.vercel.app/api/enrolments/${id}`, form, {
@@ -133,6 +131,7 @@ const Edit = () => {
             })
             .catch(err => {
                 console.error(err);
+                setErrors(err.response.data.errors);
             })
         }   
     }
@@ -150,8 +149,8 @@ const Edit = () => {
     }); 
 
     return (
-        <div className="bg-slate-100">
-        <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl my-10">
+        <div className="bg-slate-100 py-10">
+        <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl">
 
         <form className="space-y-4" onSubmit={submitForm}>
 
@@ -164,6 +163,8 @@ const Edit = () => {
                     <select className="w-full input input-bordered input-primary bg-white" name="course_id" onChange={handleForm}>
                         {courseOptions}
                     </select>
+                    {/* <span style={errorStyle}>{errors.course_id?.message}</span> */}
+                    <span style={errorStyle}>{errors.course_id}</span>
                 </div>
 
                 <div>
@@ -173,61 +174,8 @@ const Edit = () => {
                     <select className="w-full input input-bordered input-primary bg-white" name="lecturer_id" onChange={handleForm}>
                         {lecturerOptions}
                     </select>
-                </div>
-
-                <div>
-                    <label className="label">
-                        <span className="text-base label-text">Edit title</span>
-                    </label>
-                        <input 
-                        type="text" 
-                        placeholder="New title" 
-                        className="w-full input input-bordered input-primary bg-white" 
-                        onChange={handleForm} 
-                        value={form.title} 
-                        name='title'/><span 
-                        style={errorStyle}>{errors.title?.message}</span>
-                </div>
-
-                <div>
-                    <label className="label">
-                        <span className="text-base label-text">Code</span>
-                    </label>
-                        <input 
-                        type="text" 
-                        placeholder="NA000" 
-                        className="w-full input input-bordered input-primary bg-white" 
-                        onChange={handleForm} 
-                        value={form.code} 
-                        name='code'/><span 
-                        style={errorStyle}>{errors.code?.message}</span>
-                </div>
-
-                <div>
-                    <label className="label">
-                        <span className="text-base label-text">Description</span>
-                    </label>
-                        <input 
-                        type="text" 
-                        placeholder="New description..." 
-                        className="w-full input input-bordered input-primary bg-white" 
-                        onChange={handleForm} 
-                        value={form.description} 
-                        name='description'/><span 
-                        style={errorStyle}>{errors.description?.message}</span>
-                </div>
-
-                <div for="status">
-                    <label className="label">
-                        <span className="text-base label-text">Select status</span>
-                    </label>
-                    <select className="w-full input input-bordered input-primary bg-white" 
-                    name="status" onChange={handleForm}>
-                    <option value="assigned">Assigned</option>
-                    <option value="interested">Interested</option>
-                    <option value="associate">Associate</option>
-                    <option value="career_break">Career break</option>
-                    </select>
+                    {/* <span style={errorStyle}>{errors.lecturer_id?.message}</span> */}
+                    <span style={errorStyle}>{errors.lecturer_id}</span>
                 </div>
 
                 <div>
@@ -240,6 +188,7 @@ const Edit = () => {
                     value={form.date} 
                     name='date' />
                     <span style={errorStyle}>{errors.date?.message}</span>
+                    {/* <span style={errorStyle}>{errors.date}</span> */}
                 </div>
 
                 <div>
@@ -252,6 +201,7 @@ const Edit = () => {
                     value={form.time} 
                     name='time' />
                     <span style={errorStyle}>{errors.time?.message}</span>
+                    {/* <span style={errorStyle}>{errors.time}</span> */}
                 </div>
 
             <button type="submit" className="btn btn-outline btn-success mt-4">Submit</button>

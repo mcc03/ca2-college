@@ -97,7 +97,7 @@ const Create = () => {
                         onChange={handleForm} 
                         value={form.title} 
                         name='title'/><span 
-                        style={errorStyle}>{errors.title?.message}</span>
+                        style={errorStyle}>{errors.title}</span>
                     </div>
 
                     <div>
@@ -109,7 +109,7 @@ const Create = () => {
                         onChange={handleForm} 
                         value={form.code} 
                         name='code'/><span 
-                        style={errorStyle}>{errors.code?.message}</span>
+                        style={errorStyle}>{errors.code}</span>
                     </div>
 
                     <div>
@@ -121,7 +121,7 @@ const Create = () => {
                         onChange={handleForm} 
                         value={form.description} 
                         name='description'/><span 
-                        style={errorStyle}>{errors.description?.message}</span>
+                        style={errorStyle}>{errors.description}</span>
                     </div>
                     
                     <div>
@@ -133,7 +133,7 @@ const Create = () => {
                         onChange={handleForm} 
                         value={form.points} 
                         name='points'/><span 
-                        style={errorStyle}>{errors.points?.message}</span>
+                        style={errorStyle}>{errors.points}</span>
                     </div>
 
                     <div>
@@ -145,11 +145,7 @@ const Create = () => {
                         onChange={handleForm} 
                         value={form.level} 
                         name='level'/>
-                        
-                        <span style={errorStyle}>{errors.level}</span>
-                        
-                        
-                        
+                        <span style={errorStyle}>{errors.level}</span> 
                     </div>
 
     {/* 

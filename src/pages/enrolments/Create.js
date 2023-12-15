@@ -94,9 +94,7 @@ const Create = () => {
                 included = true;
                 setErrors(prevState => ({
                     ...prevState,
-                    [field] : {
-                        message: `${field} is required`
-                    }
+                    [field] : `${field} is required`
                 }));
             }
         });
@@ -121,6 +119,8 @@ const Create = () => {
             })
             .catch(err => {
                 console.error(err);
+                setErrors(err.response.data.errors);
+                console.log(err.response.data.errors);
             })
         }   
     }
@@ -151,6 +151,7 @@ const Create = () => {
                     <select className="w-full input input-bordered input-primary bg-white" name="course_id" onChange={handleForm}>
                         {courseOptions}
                     </select>
+                    <span style={errorStyle}>{errors.course_id}</span>
                 </div>
 
                 <div>
@@ -160,6 +161,7 @@ const Create = () => {
                     <select className="w-full input input-bordered input-primary bg-white" name="lecturer_id" onChange={handleForm}>
                         {lecturerOptions}
                     </select>
+                    <span style={errorStyle}>{errors.lecturer_id}</span>
                 </div>
 
                 <div>
@@ -171,7 +173,7 @@ const Create = () => {
                     onChange={handleForm} 
                     value={form.date} 
                     name='date' />
-                    <span style={errorStyle}>{errors.date?.message}</span>
+                    <span style={errorStyle}>{errors.date}</span>
                 </div>
 
                 <div>
@@ -183,7 +185,7 @@ const Create = () => {
                     onChange={handleForm} 
                     value={form.time} 
                     name='time' />
-                    <span style={errorStyle}>{errors.time?.message}</span>
+                    <span style={errorStyle}>{errors.time}</span>
                 </div>
 
                 <div for="status">
@@ -197,6 +199,7 @@ const Create = () => {
                     <option value="associate">Associate</option>
                     <option value="career_break">Career break</option>
                     </select>
+                    <span style={errorStyle}>{errors.status}</span>
                 </div>
 
                 <button type="submit" className="btn btn-outline btn-success mt-4">Submit</button>

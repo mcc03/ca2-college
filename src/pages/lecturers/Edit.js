@@ -61,9 +61,7 @@ const Edit = () => {
                 included = true;
                 setErrors(prevState => ({
                     ...prevState,
-                    [field] : {
-                        message: `${field} is required`
-                    }
+                    [field] : `${field} is required`
                 }));
             }
         });
@@ -88,6 +86,7 @@ const Edit = () => {
             })
             .catch(err => {
                 console.error(err);
+                setErrors(err.response.data.errors);
             })
         }   
     }
@@ -95,8 +94,8 @@ const Edit = () => {
     if(!lecturers) return <h4>Lecturer not found</h4>
 
     return (
-        <div className="bg-slate-100">
-            <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl my-10">
+        <div className="bg-slate-100 py-10">
+            <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl">
 
             <form className="space-y-4" onSubmit={submitForm}>
 
@@ -113,7 +112,7 @@ const Edit = () => {
                             onChange={handleForm} 
                             value={form.name} 
                             name='name'/><span 
-                            style={errorStyle}>{errors.name?.message}</span>
+                            style={errorStyle}>{errors.name}</span>
                     </div>
 
                     <div>
@@ -127,7 +126,7 @@ const Edit = () => {
                             onChange={handleForm} 
                             value={form.address} 
                             name='address'/><span 
-                            style={errorStyle}>{errors.address?.message}</span>
+                            style={errorStyle}>{errors.address}</span>
                     </div>
 
                     <div>
@@ -141,7 +140,7 @@ const Edit = () => {
                             onChange={handleForm} 
                             value={form.phone} 
                             name='phone'/><span 
-                            style={errorStyle}>{errors.phone?.message}</span>
+                            style={errorStyle}>{errors.phone}</span>
                     </div>
 
                     <div>
@@ -155,7 +154,7 @@ const Edit = () => {
                             onChange={handleForm} 
                             value={form.email} 
                             name='email'/><span 
-                            style={errorStyle}>{errors.email?.message}</span>
+                            style={errorStyle}>{errors.email}</span>
                     </div>
 
                 <button type="submit" className="btn btn-outline btn-success mt-4">Submit</button>

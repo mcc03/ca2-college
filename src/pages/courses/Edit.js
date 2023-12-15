@@ -16,6 +16,8 @@ const Edit = () => {
         level: "",
         code: "",
         points: ""
+        // start_date: "",
+        // end_date: ""
     });
 
     const errorStyle = {
@@ -62,15 +64,14 @@ const Edit = () => {
                 included = true;
                 setErrors(prevState => ({
                     ...prevState,
-                    [field] : {
-                        message: `${field} is required`
-                    }
+                    [field] : `${field} is required`
                 }));
             }
         });
 
         return included;
     };
+
 
     const submitForm = (e) => {
         e.preventDefault();
@@ -89,6 +90,8 @@ const Edit = () => {
             })
             .catch(err => {
                 console.error(err);
+                setErrors(err.response.data.errors);
+                console.log("errors: ", err.response.data.errors);
             })
         }   
     }
@@ -114,7 +117,7 @@ const Edit = () => {
                             onChange={handleForm} 
                             value={form.title} 
                             name='title'/><span 
-                            style={errorStyle}>{errors.title?.message}</span>
+                            style={errorStyle}>{errors.title}</span>
                     </div>
 
                     <div>
@@ -128,7 +131,7 @@ const Edit = () => {
                             onChange={handleForm} 
                             value={form.description} 
                             name='description'/><span 
-                            style={errorStyle}>{errors.description?.message}</span>
+                            style={errorStyle}>{errors.description}</span>
                     </div>
 
                     <div>
@@ -142,7 +145,7 @@ const Edit = () => {
                             onChange={handleForm} 
                             value={form.level} 
                             name='level'/><span 
-                            style={errorStyle}>{errors.level?.message}</span>
+                            style={errorStyle}>{errors.level}</span>
                     </div>
 
                     <div>
@@ -156,7 +159,7 @@ const Edit = () => {
                             onChange={handleForm} 
                             value={form.code} 
                             name='code'/><span 
-                            style={errorStyle}>{errors.code?.message}</span>
+                            style={errorStyle}>{errors.code}</span>
                     </div>
 
                     <div>
@@ -170,7 +173,7 @@ const Edit = () => {
                             onChange={handleForm} 
                             value={form.points} 
                             name='points'/><span 
-                            style={errorStyle}>{errors.points?.message}</span>
+                            style={errorStyle}>{errors.points}</span>
                     </div>
 
                     <div>
@@ -182,7 +185,7 @@ const Edit = () => {
                     onChange={handleForm} 
                     value={form.start_date} 
                     name='start_date' />
-                    <span style={errorStyle}>{errors.start_date?.message}</span>
+                    <span style={errorStyle}>{errors.start_date}</span>
                 </div>
 
                 <div>

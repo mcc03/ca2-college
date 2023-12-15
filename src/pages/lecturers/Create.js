@@ -43,9 +43,7 @@ const Create = () => {
                 included = true;
                 setErrors(prevState => ({
                     ...prevState,
-                    [field] : {
-                        message: `${field} is required`
-                    }
+                    [field] : `${field} is required`
                 }));
             }
         });
@@ -70,6 +68,7 @@ const Create = () => {
             })
             .catch(err => {
                 console.error(err);
+                setErrors(err.response.data.errors);
             })
         }   
     }
@@ -90,7 +89,7 @@ const Create = () => {
                     className="w-full input input-bordered input-primary bg-white" onChange={handleForm} 
                     value={form.name} 
                     name='name'/><span 
-                    style={errorStyle}>{errors.name?.message}</span>
+                    style={errorStyle}>{errors.name}</span>
                 </div>
 
                 <div>
@@ -101,7 +100,7 @@ const Create = () => {
                     className="w-full input input-bordered input-primary bg-white" onChange={handleForm} 
                     value={form.address} 
                     name='address'/><span 
-                    style={errorStyle}>{errors.address?.message}</span>
+                    style={errorStyle}>{errors.address}</span>
                 </div>
 
                 <div>
@@ -112,7 +111,7 @@ const Create = () => {
                     className="w-full input input-bordered input-primary bg-white" onChange={handleForm} 
                     value={form.phone} 
                     name='phone'/><span 
-                    style={errorStyle}>{errors.phone?.message}</span>
+                    style={errorStyle}>{errors.phone}</span>
                 </div>
                 
                 <div>
@@ -123,7 +122,7 @@ const Create = () => {
                     className="w-full input input-bordered input-primary bg-white" onChange={handleForm} 
                     value={form.email} 
                     name='email'/><span 
-                    style={errorStyle}>{errors.email?.message}</span>
+                    style={errorStyle}>{errors.email}</span>
                 </div>
 
 {/* 
