@@ -50,12 +50,12 @@ const Index = () => {
         const selectedColor = colors[index % colors.length];
 
         return (
-            <div key={lecturers.id} className={`card bg-white shadow-xl text-black min-w-[20%] outline outline-2 ${selectedColor}`}>
+            <div key={lecturers.id} className={`card bg-white shadow-xl text-black outline outline-2 ${selectedColor}`}>
                 <div className="card-body m-0 pb-0">
                     <h2 className="card-title">{lecturers.name}</h2>
-                    <p>Address: {lecturers.address}</p>
+                    <p className="truncate max-w-[16rem]">Address: {lecturers.address}</p>
                     <p>Phone: {lecturers.phone}</p>
-                    <p>Email: {lecturers.email}</p>
+                    <p className="truncate max-w-[16rem]">Email: {lecturers.email}</p>
                 </div>
 
                 <div className="card-actions justify-end p-2">
@@ -63,7 +63,7 @@ const Index = () => {
                     <div className="btn btn-xs btn-outline btn-error">
                     <button onClick={()=>document.getElementById(`my_modal_${lecturers.id}`).showModal()}>Delete</button>
                         <dialog id={`my_modal_${lecturers.id}`} className="modal">
-                        <div className="modal-box">
+                        <div className="modal-box bg-white">
                             <h3 className="font-bold text-lg">Delete lecturer? {lecturers.id}</h3>
                             <p className="py-4">Deleted lecturers cannot be restored</p>
                             <div className="modal-action">
@@ -86,7 +86,7 @@ const Index = () => {
     return (
         <div className="bg-slate-100 py-10">        
             <div className="flex justify-center gap-2 items-baseline mb-5">      
-                <h1 className="text-center text-black text-4xl">Lecturers</h1>
+                <h1 className="text-center text-black text-4xl mb-5">Lecturers</h1>
                 <Link to='create' className="btn btn-sm btn-circle btn-success">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -95,7 +95,7 @@ const Index = () => {
             </div>  
 
 
-            <div key={lecturers._id} className="flex flex-wrap gap-4 justify-center">
+            <div key={lecturers._id} className="flex flex-wrap justify-center">
                 <div className="grid grid-cols-4 gap-4">
                     {lecturersList}
                 </div>

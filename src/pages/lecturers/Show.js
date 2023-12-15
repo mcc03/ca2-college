@@ -64,7 +64,7 @@ const Show = () => {
                         {lecturers.enrolments.length > 0 ? (
                             <ul className="mb-2 text-lg">
                                 {lecturers.enrolments.map(enrollment => (
-                                    <li key={enrollment.id}>{enrollment.course.title}</li>
+                                    <Link to={`/courses/${enrollment.course.id}`}><li className=" hover:text-blue-500 text-blue-400" key={enrollment.id}>{enrollment.course.title}</li></Link>
                                 ))}
                             </ul>
                         ) : (
@@ -84,34 +84,35 @@ const Show = () => {
                     <p className="mb-2 text-lg">{lecturers.address}</p>
                     <hr/>
 
-                    <div className="flex">
-                    <div className="card-actions justify-start p-2 mt-4">
-                        <Link className="btn btn-outline btn-primary mt-0 pt-0" to={`/lecturers/${lecturers.id}/edit`}>Edit</Link>
-                            <div className="btn btn-outline btn-error">
-                            <button onClick={()=>document.getElementById(`my_modal_${lecturers.id}`).showModal()}>Delete</button>
-                        <dialog id={`my_modal_${lecturers.id}`} className="modal">
-                        <div className="modal-box">
-                            <h3 className="font-bold text-lg">Delete lecturer? {lecturers.id}</h3>
-                            <p className="py-4">Deleted lecturers cannot be restored</p>
-                            <div className="modal-action">
-                            <form method="dialog">
-                                {/* if there is a button in form, it will close the modal */}
-                                <button className="btn btn-outline btn-primary me-2">Cancel</button>
-                            <div className="btn btn-outline btn-error">
-                                <Link to='/lecturers'><DeleteBtn resource="lecturers" anotherResource="enrolments" id={lecturers.id} deleteCallBack={removeLecture} data={lecturers}/>
-                                </Link>
-                            </div>
-                            </form>
-                            </div>
+                    <div className="flex flex-row justify-between">
+                        <div className="card-actions p-2 mt-4">
+                            <Link className="btn btn-outline btn-primary mt-0 pt-0" to="/lecturers">Back</Link>
                         </div>
-                        </dialog>
-                            </div>
-                    </div> 
 
-                        <div className="card-actions justify-end p-2 mt-4">
-                        <Link className="btn btn-outline btn-primary mt-0 pt-0" to={`/lecturers/${lecturers.id - 1}`}>Previous</Link>
-                        <Link className="btn btn-outline btn-primary mt-0 pt-0" to={`/lecturers/${lecturers.id + 1}`}>Next</Link>
-                        </div>
+                        <div className="card-actions p-2 mt-4">
+                            <Link className="btn btn-outline btn-primary mt-0 pt-0" to={`/lecturers/${lecturers.id}/edit`}>Edit</Link>
+
+                            <div className="btn btn-outline btn-error">
+                                <button onClick={()=>document.getElementById(`my_modal_${lecturers.id}`).showModal()}>Delete</button>
+                                    <dialog id={`my_modal_${lecturers.id}`} className="modal">
+                                    <div className="modal-box bg-white">
+                                        <h3 className="font-bold text-lg">Delete lecturer? {lecturers.id}</h3>
+                                        <p className="py-4">Deleted lecturers cannot be restored</p>
+                                        <div className="modal-action">
+                                            <form method="dialog">
+                                            {/* if there is a button in form, it will close the modal */}
+                                            <button className="btn btn-outline btn-primary me-2">Cancel</button>
+                                            <div className="btn btn-outline btn-error">
+                                                <Link to='/lecturers'>
+                                                    <DeleteBtn resource="lecturers" anotherResource="enrolments" id={lecturers.id} deleteCallBack={removeLecture} data={lecturers}/>
+                                                </Link>
+                                            </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </dialog>
+                            </div>
+                        </div> 
                     </div>
                 
                 </div>

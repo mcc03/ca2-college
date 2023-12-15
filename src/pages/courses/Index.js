@@ -68,7 +68,7 @@ const Index = () => {
                     <div className="btn btn-xs btn-outline btn-error">
                     <button onClick={()=>document.getElementById(`my_modal_${course.id}`).showModal()}>Delete</button>
                         <dialog id={`my_modal_${course.id}`} className="modal">
-                        <div className="modal-box">
+                        <div className="modal-box bg-white">
                             <h3 className="font-bold text-lg">Delete course? {course.id}</h3>
                             <p className="py-4">Deleted courses cannot be restored</p>
                             <div className="modal-action">
@@ -92,7 +92,7 @@ const Index = () => {
         <div className="bg-slate-100 py-10">
 
             <div className="flex justify-center gap-2 items-baseline mb-5">      
-            <h1 className="text-center text-black text-4xl">Courses</h1>
+            <h1 className="text-center text-black text-4xl mb-5">Courses</h1>
             <Link to='create' className="btn btn-sm btn-circle btn-info">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -101,7 +101,7 @@ const Index = () => {
             </div>  
 
 
-            <div key={courses._id} className="flex flex-wrap gap-4 justify-center">
+            <div key={courses._id} className="flex flex-wrap justify-center">
                 <div className="grid grid-cols-4 gap-4">
                     {coursesList}
                 </div>

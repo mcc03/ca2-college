@@ -61,7 +61,7 @@ const Index = () => {
                     <div className="btn btn-xs btn-outline btn-error">
                     <button onClick={()=>document.getElementById(`my_modal_${enrolments.id}`).showModal()}>Delete</button>
                         <dialog id={`my_modal_${enrolments.id}`} className="modal">
-                        <div className="modal-box">
+                        <div className="modal-box bg-white">
                             <h3 className="font-bold text-lg">Delete enrolment? {enrolments.id}</h3>
                             <p className="py-4">Deleted enrolments cannot be restored</p>
                             <div className="modal-action">
@@ -84,7 +84,7 @@ const Index = () => {
     return (
         <div className="bg-slate-100 py-10">        
             <div className="flex justify-center gap-2 items-baseline mb-5">      
-                <h1 className="text-center text-black text-4xl">Enrolments</h1>
+                <h1 className="text-center text-black text-4xl mb-5">Enrolments</h1>
                 <Link to='create' className="btn btn-sm btn-circle btn-warning">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />

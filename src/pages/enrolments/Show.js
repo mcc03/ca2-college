@@ -51,11 +51,12 @@ const Show = () => {
 <div className="flex items-center justify-center bg-slate-100 py-10">
             <div className="card w-[64rem] bg-white shadow-xl text-black">
                 <div className="card-body">
-                    <h1 className="card-title mb-2 text-4xl">{enrolments.course.title}</h1>
+                <Link to={`/courses/${enrolments.course.id}`}><h1 className="card-title mb-2 text-4xl hover:text-blue-500 hover:underline">{enrolments.course.title}</h1></Link>
                     <hr/>
 
                     <label className="text-gray-400">Lecturer</label>
-                    <p className="card-title mb-2 text-lg">{enrolments.lecturer.name}</p>
+                    <Link to={`/lecturers/${enrolments.lecturer.id}`}>
+                        <p className="mb-2 text-lg hover:text-blue-500 text-blue-400">{enrolments.lecturer.name}</p></Link>
                     <hr/>
 
                     <label className="text-gray-400">Course description</label>
@@ -90,14 +91,19 @@ const Show = () => {
                         </div>
                     </div>
 
-                    <div className="flex">
-                    <div className="card-actions justify-start p-2 mt-4">
+                    <div className="flex flex-row justify-between">  
+                    
+                    <div className="card-actions p-2 mt-4">
+                        <Link className="btn btn-outline btn-primary mt-0 pt-0" to="/enrolments">Back</Link>
+                        </div>
+
+                    <div className="card-actions p-2 mt-4">
                         <Link className="btn btn-outline btn-primary mt-0 pt-0" to={`/enrolments/${enrolments.id}/edit`}>Edit</Link>
 
                         <div className="btn btn-outline btn-error">
                         <button onClick={()=>document.getElementById(`my_modal_${enrolments.id}`).showModal()}>Delete</button>
                         <dialog id={`my_modal_${enrolments.id}`} className="modal">
-                        <div className="modal-box">
+                        <div className="modal-box bg-white">
                             <h3 className="font-bold text-lg">Delete enrolment? {enrolments.id}</h3>
                             <p className="py-4">Deleted enrolments cannot be restored</p>
                             <div className="modal-action">
@@ -115,10 +121,7 @@ const Show = () => {
                         </div>
                     </div> 
 
-                        <div className="card-actions justify-end p-2 mt-4">
-                        <Link className="btn btn-outline btn-primary mt-0 pt-0" to={`/enrolments/${enrolments.id - 1}`}>Previous</Link>
-                        <Link className="btn btn-outline btn-primary mt-0 pt-0" to={`/enrolments/${enrolments.id + 1}`}>Next</Link>
-                        </div>
+
                     </div>
 
 
